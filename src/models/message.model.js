@@ -2,6 +2,10 @@ import mongoose, { Schema } from "mongoose";
 
 
 const messageSchema = new Schema({
+    conversationId: {
+        type: String,
+        required: true
+    },
     sender: {
         type: Schema.Types.ObjectId,
         ref: "User"
@@ -28,6 +32,11 @@ const messageSchema = new Schema({
         type: Boolean,
         default: false
     },
+    messageType: {
+        type: String,
+        enum: ["text", "image", "file", "audio"],
+        default: "text"
+    }
 
 }, {
     timestamps: true
